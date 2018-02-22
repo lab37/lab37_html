@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>风水生辰合不合!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>欢迎来到风水生辰测试!</h1>
+<p>请先选择共享位置，本站将根据不同的位置来测试显示不同的结果.</p>
+
+<p>上一位成功测试者：shi宇</p>
+
+<script>
+    if(navigator.geolocation){  
+      navigator.geolocation.getCurrentPosition(onSuccess , onError);  
+    }else{  
+      alert("您的浏览器不支持使用HTML 5来获取地理位置服务");  
+    }  
+    //定位数据获取成功响应  
+    function  onSuccess(position){  
+	
+           var xhr = new XMLHttpRequest();                 // Create XMLHttpRequest object
+
+           xhr.onload = function() {                       // When response has loaded
+          // The following conditional check will not work locally - only on a server
+         if(xhr.status === 200) {                       // If server status was ok
+          document.getElementById('content').innerHTML = xhr.responseText; // Update
+        }
+    };
+
+          xhr.open('GET', 'w' + position.coords.latitude + 'j' + position.coords.longitude, true);        // Prepare the request
+          xhr.send(null);                                 // Send the request
+
+     /* 
+			alert('纬度: '          + position.coords.latitude          + '\n' +  
+          '经度: '         + position.coords.longitude         + '\n' +  
+          '海拔: '          + position.coords.altitude          + '\n' +  
+          '水平精度: '          + position.coords.accuracy          + '\n' +  
+          '垂直精度: ' + position.coords.altitudeAccura)  
+    	 
+	*/
+    //定位数据获取失败响应  
+	alert('根据本大神的风水测试，发现你与上一位测试者真是天作之合，相联系她/他吗，快快给本大神发红包')；
+		} 
+    function onError(error) {  
+      switch(error.code)  
+      {  
+        case error.PERMISSION_DENIED:  
+        alert("您拒绝对获取地理位置的请求");  
+        break;  
+        case error.POSITION_UNAVAILABLE:  
+        alert("位置信息是不可用的");  
+        break;  
+        case error.TIMEOUT:  
+        alert("请求您的地理位置超时");  
+        break;  
+        case error.UNKNOWN_ERROR:  
+        alert("未知错误");  
+        break;  
+      }  
+    }  
+</script>
+
+</body>
+</html>
