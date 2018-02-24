@@ -18,27 +18,25 @@
 
 <script>
     if(navigator.geolocation){  
-      navigator.geolocation.getCurrentPosition(onSuccess , onError);  
+    	navigator.geolocation.getCurrentPosition(onSuccess , onError);  
     }else{  
-      alert("您的浏览器不支持使用HTML 5来获取地理位置服务");  
+     	alert("您的浏览器不支持使用HTML5来获取地理位置服务");  
     }  
     //定位数据获取成功响应  
     function  onSuccess(position){  
-	
-           var xhr = new XMLHttpRequest();                 // Create XMLHttpRequest object
-
-           xhr.onload = function() {                       // When response has loaded
-          // The following conditional check will not work locally - only on a server
-         if(xhr.status === 200) {                       // If server status was ok
+	var xhr = new XMLHttpRequest();                 // Create XMLHttpRequest object
+        xhr.onload = function() {                       // When response has loaded
+    // The following conditional check will not work locally - only on a server
+        if(xhr.status === 200) {                       // If server status was ok
           document.getElementById('content').innerHTML = xhr.responseText; // Update
         }
     };
 
-          xhr.open('GET', 'w' + position.coords.latitude + 'j' + position.coords.longitude, true);        // Prepare the request
-          xhr.send(null);                                 // Send the request
+    xhr.open('GET', 'w' + position.coords.latitude + 'j' + position.coords.longitude, true);        // Prepare the request
+    xhr.send(null);                                 // Send the request
 
-     /* 
-			alert('纬度: '          + position.coords.latitude          + '\n' +  
+	/* 
+	   alert('纬度: '          + position.coords.latitude          + '\n' +  
           '经度: '         + position.coords.longitude         + '\n' +  
           '海拔: '          + position.coords.altitude          + '\n' +  
           '水平精度: '          + position.coords.accuracy          + '\n' +  
@@ -46,8 +44,8 @@
     	 
 	*/
     //定位数据获取失败响应  
-	alert('根据本大神的风水测试，发现你与上一位测试者真是天作之合，相联系她/他吗，快快给本大神发红包')；
-		} 
+    alert('根据本大神的风水测试，发现你与上一位测试者真是天作之合，相联系她/他吗，快快给本大神发红包')；
+    } 
     function onError(error) {  
       switch(error.code)  
       {  
