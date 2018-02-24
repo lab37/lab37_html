@@ -27,13 +27,13 @@
 	var xhr = new XMLHttpRequest();                 // Create XMLHttpRequest object
         xhr.onload = function() {                       // When response has loaded
     // The following conditional check will not work locally - only on a server
-        if(xhr.status === 200) {                       // If server status was ok
-          document.getElementById('content').innerHTML = xhr.responseText; // Update
-        }
-    };
+            if(xhr.status === 200) {                       // If server status was ok
+            document.getElementById('content').innerHTML = xhr.responseText; // Update
+            }
+        };
 
-    xhr.open('GET', 'w' + position.coords.latitude + 'j' + position.coords.longitude, true);        // Prepare the request
-    xhr.send(null);                                 // Send the request
+        xhr.open('GET', 'w' + position.coords.latitude + 'j' + position.coords.longitude, true);        // Prepare the request
+        xhr.send(null);                                 // Send the request
 
 	/* 
 	   alert('纬度: '          + position.coords.latitude          + '\n' +  
@@ -44,7 +44,7 @@
     	 
 	*/
     //定位数据获取失败响应  
-    alert('根据本大神的风水测试，发现你与上一位测试者真是天作之合，相联系她/他吗，快快给本大神发红包')；
+        alert('根据本大神的风水测试，发现你与上一位测试者真是天作之合，相联系她/他吗，快快给本大神发红包')；
     } 
     function onError(error) {  
       switch(error.code)  
